@@ -80,9 +80,9 @@ and maintained explicitly.
 
 **Proposed file:** `01-local-lab-setup.md`
 
-- Verify Docker Desktop, Minikube, and `kubectl`.
+- Verify Docker Engine, Minikube, and `kubectl`.
 - Start Minikube with the Docker driver and explicit CPU, memory, and disk settings.
-- Understand profiles, contexts, namespaces, and the relationship between Docker Desktop
+- Understand profiles, contexts, namespaces, and the relationship between Docker
   and the Minikube node.
 - Enable only the add-ons needed by later chapters.
 - Workshop: create, inspect, stop, start, and delete a disposable lab cluster.
