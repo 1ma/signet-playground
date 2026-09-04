@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bad-pod
+  labels:
+    chapter: "04"
+spec:
+  containers:
+    - name: app
+      image: nginx:1.27
+      ports:
+        - containerPort: 99999

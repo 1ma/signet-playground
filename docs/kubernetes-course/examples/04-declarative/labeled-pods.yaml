@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-frontend
+  labels:
+    chapter: "04"
+    app: myapp
+    tier: frontend
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.27
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-backend
+  labels:
+    chapter: "04"
+    app: myapp
+    tier: backend
+spec:
+  containers:
+    - name: httpd
+      image: httpd:2.4
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: other-app
+  labels:
+    chapter: "04"
+    app: other
+    tier: backend
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.27

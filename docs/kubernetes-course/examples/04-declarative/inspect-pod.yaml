@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: inspect-me
+  labels:
+    chapter: "04"
+    exercise: inspect
+  annotations:
+    purpose: "learning to read API objects"
+spec:
+  containers:
+    - name: httpd
+      image: httpd:2.4
+      ports:
+        - containerPort: 80
