@@ -52,27 +52,28 @@ and maintained explicitly.
 
 ## Course roadmap
 
-| Phase | Chapter                                                                                          | Main concepts                                              | Practical outcome                                 |
-|-------|--------------------------------------------------------------------------------------------------|------------------------------------------------------------|---------------------------------------------------|
-| 0     | [01. Local lab setup](#01-local-lab-setup)                                                       | Minikube, Docker driver, `kubectl`, cluster context        | A reproducible local cluster                      |
-| 0     | [02. Kubernetes mental model](#02-kubernetes-mental-model)                                       | Control plane, nodes, API objects, reconciliation          | Inspect the cluster as a distributed system       |
-| 1     | [03. Pods and container lifecycle](#03-pods-and-container-lifecycle)                             | Pods, container states, logs, exec, probes                 | Run and debug a single workload                   |
-| 1     | [04. Declarative configuration and kubectl](#04-declarative-configuration-and-kubectl)           | YAML, metadata, spec/status, apply, diff, delete           | Manage resources declaratively                    |
-| 1     | [05. Deployments and ReplicaSets](#05-deployments-and-replicasets)                               | Controllers, replicas, rollout, rollback                   | Operate a stateless application                   |
-| 2     | [06. Services and cluster networking](#06-services-and-cluster-networking)                       | Service discovery, DNS, ClusterIP, NodePort, port-forward  | Connect workloads reliably                        |
-| 2     | [07. Configuration and secrets](#07-configuration-and-secrets)                                   | ConfigMaps, Secrets, environment variables, mounted files  | Externalize application configuration             |
-| 2     | [08. Health, resources, and scheduling](#08-health-resources-and-scheduling)                     | Probes, requests, limits, QoS, scheduling                  | Make workloads observable and schedulable         |
-| 3     | [09. Persistent storage](#09-persistent-storage)                                                 | Volumes, PVs, PVCs, StorageClasses, access modes           | Persist data across Pod replacement               |
-| 3     | [10. Jobs, init containers, and startup ordering](#10-jobs-init-containers-and-startup-ordering) | Jobs, init containers, idempotency, readiness              | Model setup tasks and dependencies                |
-| 3     | [11. StatefulSets and stable identity](#11-statefulsets-and-stable-identity)                     | StatefulSets, headless Services, stable storage and DNS    | Operate a stateful replicated workload            |
-| 4     | [12. Namespaces, labels, and policy boundaries](#12-namespaces-labels-and-policy-boundaries)     | Labels, selectors, annotations, namespaces, quotas         | Organize and query a growing application          |
-| 4     | [13. Ingress and local traffic exposure](#13-ingress-and-local-traffic-exposure)                 | Ingress, ingress controller, hostnames, TLS overview       | Expose HTTP services through one entry point      |
-| 4     | [14. Security foundations](#14-security-foundations)                                             | ServiceAccounts, RBAC, security contexts, secret handling  | Apply least privilege to the lab                  |
-| 5     | [15. Troubleshooting and observability](#15-troubleshooting-and-observability)                   | Events, logs, metrics, debug containers, failure isolation | Diagnose deliberately broken workloads            |
-| 5     | [16. Kustomize and environment overlays](#16-kustomize-and-environment-overlays)                 | Bases, overlays, patches, generated configuration          | Maintain local environment variants               |
-| 5     | [17. Helm after the fundamentals](#17-helm-after-the-fundamentals)                               | Charts, templates, values, releases, hooks                 | Package the application without hiding Kubernetes |
-| 6     | [18. Capstone: Signet Playground on Kubernetes](#18-capstone-signet-playground-on-kubernetes)    | Architecture migration, state, dependencies, operations    | Run the complete repository on Minikube           |
-| 6     | [19. Production gaps and next steps](#19-production-gaps-and-next-steps)                         | HA, managed Kubernetes, autoscaling, monitoring, GitOps    | Evaluate what must change beyond the lab          |
+| Phase | Chapter                                                                                          | Main concepts                                              | Practical outcome                                     |
+|-------|--------------------------------------------------------------------------------------------------|------------------------------------------------------------|-------------------------------------------------------|
+| 0     | [01. Local lab setup](#01-local-lab-setup)                                                       | Minikube, Docker driver, `kubectl`, cluster context        | A reproducible local cluster                          |
+| 0     | [02. Kubernetes mental model](#02-kubernetes-mental-model)                                       | Control plane, nodes, API objects, reconciliation          | Inspect the cluster as a distributed system           |
+| 1     | [03. Pods and container lifecycle](#03-pods-and-container-lifecycle)                             | Pods, container states, logs, exec, probes                 | Run and debug a single workload                       |
+| 1     | [04. Declarative configuration and kubectl](#04-declarative-configuration-and-kubectl)           | YAML, metadata, spec/status, apply, diff, delete           | Manage resources declaratively                        |
+| 1     | [05. Deployments and ReplicaSets](#05-deployments-and-replicasets)                               | Controllers, replicas, rollout, rollback                   | Operate a stateless application                       |
+| 2     | [06. Services and cluster networking](#06-services-and-cluster-networking)                       | Service discovery, DNS, ClusterIP, NodePort, port-forward  | Connect workloads reliably                            |
+| 2     | [07. Configuration and secrets](#07-configuration-and-secrets)                                   | ConfigMaps, Secrets, environment variables, mounted files  | Externalize application configuration                 |
+| 2     | [08. Health, resources, and scheduling](#08-health-resources-and-scheduling)                     | Probes, requests, limits, QoS, scheduling                  | Make workloads observable and schedulable             |
+| 3     | [09. Persistent storage](#09-persistent-storage)                                                 | Volumes, PVs, PVCs, StorageClasses, access modes           | Persist data across Pod replacement                   |
+| 3     | [10. Jobs, init containers, and startup ordering](#10-jobs-init-containers-and-startup-ordering) | Jobs, init containers, idempotency, readiness              | Model setup tasks and dependencies                    |
+| 3     | [11. StatefulSets and stable identity](#11-statefulsets-and-stable-identity)                     | StatefulSets, headless Services, stable storage and DNS    | Operate a stateful replicated workload                |
+| 4     | [12. Namespaces, labels, and policy boundaries](#12-namespaces-labels-and-policy-boundaries)     | Labels, selectors, annotations, namespaces, quotas         | Organize and query a growing application              |
+| 4     | [13. Ingress and local traffic exposure](#13-ingress-and-local-traffic-exposure)                 | Ingress, ingress controller, hostnames, TLS overview       | Expose HTTP services through one entry point          |
+| 4     | [14. Security foundations](#14-security-foundations)                                             | ServiceAccounts, RBAC, security contexts, secret handling  | Apply least privilege to the lab                      |
+| 5     | [15. Troubleshooting and observability](#15-troubleshooting-and-observability)                   | Events, logs, metrics, debug containers, failure isolation | Diagnose deliberately broken workloads                |
+| 5     | [16. Kustomize and environment overlays](#16-kustomize-and-environment-overlays)                 | Bases, overlays, patches, generated configuration          | Maintain local environment variants                   |
+| 5     | [17. Helm after the fundamentals](#17-helm-after-the-fundamentals)                               | Charts, templates, values, releases, hooks                 | Package the application without hiding Kubernetes     |
+| 6     | [18. Capstone: Signet Playground on Kubernetes](#18-capstone-signet-playground-on-kubernetes)    | Architecture migration, state, dependencies, operations    | Run the complete repository on Minikube               |
+| 6     | [19. Production gaps and next steps](#19-production-gaps-and-next-steps)                         | HA, managed Kubernetes, autoscaling, monitoring, GitOps    | Evaluate what must change beyond the lab              |
+| 6     | [20. From Minikube to k3s: a real cluster](#20-from-minikube-to-k3s-a-real-cluster)              | k3s, remote clusters, Traefik, ServiceLB, local-path       | Redeploy the capstone on a lightweight remote cluster |
 
 ## Detailed chapter index
 
@@ -298,6 +299,21 @@ The completed system should preserve the important behavior of the Compose stack
 - Final exercise: write a production-readiness assessment rather than pretending the
   local chart is production-ready.
 
+### 20. From Minikube to k3s: a real cluster
+
+**Proposed file:** `20-from-minikube-to-k3s.md`
+
+- Compare k3s architecture with Minikube: single binary, embedded SQLite vs etcd,
+  containerd without Docker, built-in Traefik and ServiceLB.
+- Configure remote `kubeconfig` access to a dedicated k3s node.
+- Redeploy the capstone manifests and observe what works unchanged and what requires
+  adaptation (Ingress controller, StorageClass, service exposure).
+- Contrast real networking (no `minikube tunnel`) with the local lab experience.
+- Position k3s between Minikube (disposable local lab) and managed Kubernetes
+  (GKE, EKS, AKS) as a lightweight but genuine cluster.
+- Workshop: deploy the Signet Playground Helm chart on k3s and validate end-to-end
+  operation.
+
 ## Suggested pacing
 
 | Stage                            | Chapters | Suggested effort |
@@ -307,7 +323,7 @@ The completed system should preserve the important behavior of the Compose stack
 | Stateful workloads and lifecycle | 09-11    | 8-12 hours       |
 | Operations and security          | 12-15    | 10-14 hours      |
 | Packaging                        | 16-17    | 5-8 hours        |
-| Capstone and assessment          | 18-19    | 12-20 hours      |
+| Capstone and assessment          | 18-20    | 14-24 hours      |
 
 The pacing is intentionally flexible. A chapter is complete when its workshop can be
 repeated without blindly copying commands and its failure scenarios can be explained.
