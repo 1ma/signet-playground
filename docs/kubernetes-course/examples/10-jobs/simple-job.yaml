@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello-job
+  labels:
+    chapter: "10"
+spec:
+  template:
+    metadata:
+      labels:
+        chapter: "10"
+    spec:
+      containers:
+        - name: hello
+          image: busybox:1.37
+          command: ["sh", "-c", "echo 'Job completed at' $(date) && sleep 2"]
+      restartPolicy: Never
